@@ -6,7 +6,7 @@ import { reverseGeocode } from "./features/geocoding/service";
 const app = new Hono();
 
 // Check DB connection on startup, unless in test mode
-if (process.env.NODE_ENV !== 'test' || process.env.NODE_ENV !== 'local') {
+if (process.env.NODE_ENV !== 'test') {
     checkConnection();
 }
 

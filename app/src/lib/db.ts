@@ -2,16 +2,15 @@ import { SQL } from "bun";
 
 const DB_URL = process.env.DATABASE_URL || "postgres://postgres:postgres@localhost:15432/geo";
 
-export const sql = new SQL({
-    url: DB_URL,
+export const sql = new SQL(DB_URL, {
     max: 20,
     idleTimeout: 30,
     maxLifetime: 10,
     connectTimeout: 60,
 
-    connect: client => {
+    onconnect: client => {
         console.log("Connected to database");
-    }
+    },
     onclose: client => {
         console.log("Disconnected from database");
     }
